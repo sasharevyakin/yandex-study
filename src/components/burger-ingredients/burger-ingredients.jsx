@@ -44,6 +44,7 @@ export const BurgerIngredients = ({ ingredients }) => {
           </Tab>
         </ul>
       </nav>
+
       <Headline name="Булки" />
       <div className={`${styles.flex} pl-4 pr-4`}>
         {bun.map((elem) => (
