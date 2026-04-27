@@ -1,0 +1,22 @@
+.ingredient{
+  position: relative;
+  text-align: center;
+}
+.price{
+  font-family: Iceland;
+  font-size: 28px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.title{
+  font-size: 16px;
+  line-height: 24px;
+}
+.counter{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
