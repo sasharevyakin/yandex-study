@@ -14,10 +14,8 @@
   list-style-type: none;
 }
 
-.flex{
+.flex {
   display: grid;
-  gap: 24px;
   grid-template-columns: 1fr 1fr;
-  padding-left: 16px;
-  padding-right: 16px;
+  gap: 24px;
 }
