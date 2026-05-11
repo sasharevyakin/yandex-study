@@ -1,10 +1,10 @@
 import { CurrencyIcon, Counter } from '@krgaa/react-developer-burger-ui-components';
 
-import styles from './kebab-case.module.css';
+import styles from './ingredient.module.css';
 
-function KebabCase(props) {
+function Ingredient(props) {
   return (
-    <div className={styles.ingredient}>
+    <div className={styles.ingredient} onClick={props.click}>
       <img className="mb-1 p-4" src={props.img} alt={props.title} />
       <div className={`${styles.price} text text_type_digits-default mb-1`}>
         {props.price} <CurrencyIcon type="primary" />
@@ -17,4 +17,4 @@ function KebabCase(props) {
   );
 }
 
-export default KebabCase;
+export default Ingredient;

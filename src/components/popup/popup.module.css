@@ -1,0 +1,36 @@
+.popup_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 60%);
+  transition: opacity 0.3s ease;
+}
+
+.popup_overlay.active {
+  opacity: 1;
+}
+
+.popup_content {
+  position: relative;
+  min-width: max-content;
+  max-width: 90%;
+  text-align: center;
+  background: #1c1c21;
+  border-radius: 40px;
+}
+
+.popup_close {
+  position: absolute;
+  top: 49px;
+  right: 33px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
