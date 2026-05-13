@@ -1,0 +1,25 @@
+.popup_content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  max-width: 90%;
+  text-align: center;
+  background: #1c1c21;
+  border-radius: 40px;
+  transform: translate(-50%, -50%);
+}
+
+.popup_close {
+  height: 39px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.popup_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

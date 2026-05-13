@@ -1,0 +1,13 @@
+.popup_overlay {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 60%);
+  transition: opacity 0.3s ease;
+}
+
+.popup_overlay.active {
+  opacity: 1;
+}

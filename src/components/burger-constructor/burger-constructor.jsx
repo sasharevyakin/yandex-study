@@ -8,7 +8,8 @@ import { useState } from 'react';
 
 //import { useRef } from 'react';
 //import { useDrag, useDrop } from 'react-dnd';
-import Popup from '@components/popup/popup';
+import Modal from '@/components/modal/modal';
+import OrderDetails from '@/components/orderdetails/orderdetails';
 
 // eslint-disable-next-line css-modules/no-unused-class
 import styles from './burger-constructor.module.css';
@@ -16,18 +17,24 @@ import styles from './burger-constructor.module.css';
 export const BurgerConstructor = ({ ingredients }) => {
   console.log(ingredients);
 
-  const [isPopupOpen, setPopupOpen] = useState(false);
-
-  function handleIngredientClick() {
-    setPopupOpen(true);
-  }
-
   const ingredient_first = ingredients.flatMap((ingredient, index) =>
     index === 0 ? [ingredient] : []
   );
   const ingredients_other = ingredients.flatMap((ingredient) =>
     ingredient.type != 'bun' ? [ingredient] : []
   );
+
+  const [orderNumber, setOrderNumber] = useState(null);
+
+  const handleOpenOrderMock = () => {
+    setOrderNumber('034536'); // фиктивный номер
+  };
+
+  {
+    /*const handleCloseOrder = () => {
+    setOrderNumber(null);
+  };*/
+  }
 
   return (
     <section className={styles.burger_constructor}>
@@ -83,20 +90,12 @@ export const BurgerConstructor = ({ ingredients }) => {
           <span className="text text_type_digits-medium">610</span>
           <CurrencyIcon type="primary" />
         </div>
-        <Button onClick={() => handleIngredientClick()} size="large" type="primary">
+        <Button title="" onClick={handleOpenOrderMock} size="large" type="primary">
           Оформить заказ
         </Button>
-        <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
-          <div className="text text_type_digits-large pt-20 mb-8">034536</div>
-          <div className="text text_type_main-medium mb-15">идентификатор заказа</div>
-          <img src="/dun_icon.svg" alt="Done icon" />
-          <div className="text text_type_main-default mt-15 mb-2">
-            Ваш заказ начали готовить
-          </div>
-          <div className="text text_type_main-default text_color_inactive pb-15">
-            Дождитесь готовности на орбитальной станции
-          </div>
-        </Popup>
+        <Modal isOpen={!!orderNumber} onClose={() => setOrderNumber(null)} title="">
+          {orderNumber && <OrderDetails orderNumber={orderNumber} />}
+        </Modal>
       </div>
     </section>
   );

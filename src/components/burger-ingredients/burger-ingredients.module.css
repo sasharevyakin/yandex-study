@@ -36,9 +36,3 @@
 .scroll_y::-webkit-scrollbar-track {
   background: #4c4cff;
 }
-
-.popup_flex {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}

@@ -1,9 +1,10 @@
 import { Tab } from '@krgaa/react-developer-burger-ui-components';
 import { useState } from 'react';
 
-import Ingredient from '@/components/kebab-case/ingredient';
+import Ingredient from '@/components/ingredient/ingredient';
+import IngredientDetails from '@/components/ingredientdetails/ingredientdetails';
+import Modal from '@/components/modal/modal';
 import Headline from '@components/headline/headline';
-import Popup from '@components/popup/popup';
 
 import styles from './burger-ingredients.module.css';
 
@@ -103,49 +104,13 @@ export const BurgerIngredients = ({ ingredients }) => {
           ))}
         </div>
       </div>
-      <Popup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)}>
-        {selectedIngredient && (
-          <>
-            <div className="text text_type_main-large">Детали ингредиента</div>
-            <img
-              src={selectedIngredient.image_large}
-              alt={selectedIngredient.name}
-              className="mb-4"
-            />
-            <div className="text text_type_main-medium mb-8">
-              {selectedIngredient.name}
-            </div>
-            <div
-              className={`${styles.popup_flex} text text_type_main-default text_color_inactive`}
-            >
-              <div>
-                <div>Калории, ккал</div>
-                <div className="text text_type_digits-default">
-                  {selectedIngredient.calories}
-                </div>
-              </div>
-              <div>
-                <div>Белки, г</div>
-                <div className="text text_type_digits-default">
-                  {selectedIngredient.proteins}
-                </div>
-              </div>
-              <div>
-                <div>Жиры, г</div>
-                <div className="text text_type_digits-default">
-                  {selectedIngredient.fat}
-                </div>
-              </div>
-              <div>
-                <div>Углеводы, г</div>
-                <div className="text text_type_digits-default">
-                  {selectedIngredient.carbohydrates}
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-      </Popup>
+      <Modal
+        title="Детали ингредиента"
+        isOpen={isPopupOpen}
+        onClose={() => setPopupOpen(false)}
+      >
+        <IngredientDetails ingredient={selectedIngredient} />
+      </Modal>
     </section>
   );
 };
