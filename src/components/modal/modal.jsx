@@ -2,26 +2,27 @@ import { CloseIcon } from '@krgaa/react-developer-burger-ui-components';
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import ModalOverlay from '@/components/modaloverlay/modaloverlay';
+import ModalOverlay from '@/components/modal-overlay/modal-overlay';
 
 import styles from './modal.module.css';
 
-function Modal({ isOpen, onClose, title, children }) {
+function Modal({ onClose, title, children }) {
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose();
     };
-    if (isOpen) {
-      document.addEventListener('keydown', handleEsc);
-      document.body.style.overflow = 'hidden';
-    }
+
+    document.addEventListener('keydown', handleEsc);
+    document.body.style.overflow = 'hidden';
+
     return () => {
       document.removeEventListener('keydown', handleEsc);
       document.body.style.overflow = '';
     };
-  }, [isOpen, onClose]);
+  }, [onClose]);
 
-  if (!isOpen) return null;
+  const modalRoot = document.getElementById('modals');
+  if (!modalRoot) return null;
 
   return ReactDOM.createPortal(
     <>
@@ -36,7 +37,7 @@ function Modal({ isOpen, onClose, title, children }) {
         {children}
       </div>
     </>,
-    document.body
+    modalRoot
   );
 }
 

@@ -1,18 +1,15 @@
 import { Tab } from '@krgaa/react-developer-burger-ui-components';
 import { useState } from 'react';
 
+import IngredientDetails from '@/components/ingredient-details/ingredient-details';
 import Ingredient from '@/components/ingredient/ingredient';
-import IngredientDetails from '@/components/ingredientdetails/ingredientdetails';
 import Modal from '@/components/modal/modal';
 import Headline from '@components/headline/headline';
 
 import styles from './burger-ingredients.module.css';
 
 export const BurgerIngredients = ({ ingredients }) => {
-  const [isPopupOpen, setPopupOpen] = useState(false);
   const [selectedIngredient, setSelectedIngredient] = useState(null);
-
-  console.log(ingredients);
 
   const bun = ingredients.flatMap((ingredient) =>
     ingredient.type === 'bun' ? [ingredient] : []
@@ -26,7 +23,10 @@ export const BurgerIngredients = ({ ingredients }) => {
 
   const handleIngredientClick = (ingredient) => {
     setSelectedIngredient(ingredient);
-    setPopupOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedIngredient(null);
   };
 
   return (
@@ -104,13 +104,11 @@ export const BurgerIngredients = ({ ingredients }) => {
           ))}
         </div>
       </div>
-      <Modal
-        title="Детали ингредиента"
-        isOpen={isPopupOpen}
-        onClose={() => setPopupOpen(false)}
-      >
-        <IngredientDetails ingredient={selectedIngredient} />
-      </Modal>
+      {selectedIngredient && (
+        <Modal title="Детали ингредиента" onClose={handleCloseModal}>
+          <IngredientDetails ingredient={selectedIngredient} />
+        </Modal>
+      )}
     </section>
   );
 };

@@ -1,4 +1,4 @@
-import styles from './ingredientdetails.module.css';
+import styles from './ingredient-details.module.css';
 
 function IngredientDetails({ ingredient }) {
   if (!ingredient) return null;

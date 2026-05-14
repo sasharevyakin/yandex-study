@@ -9,7 +9,7 @@ import { useState } from 'react';
 //import { useRef } from 'react';
 //import { useDrag, useDrop } from 'react-dnd';
 import Modal from '@/components/modal/modal';
-import OrderDetails from '@/components/orderdetails/orderdetails';
+import OrderDetails from '@/components/order-details/order-details';
 
 // eslint-disable-next-line css-modules/no-unused-class
 import styles from './burger-constructor.module.css';
@@ -93,9 +93,11 @@ export const BurgerConstructor = ({ ingredients }) => {
         <Button title="" onClick={handleOpenOrderMock} size="large" type="primary">
           Оформить заказ
         </Button>
-        <Modal isOpen={!!orderNumber} onClose={() => setOrderNumber(null)} title="">
-          {orderNumber && <OrderDetails orderNumber={orderNumber} />}
-        </Modal>
+        {orderNumber && (
+          <Modal onClose={() => setOrderNumber(null)} title="">
+            <OrderDetails orderNumber={orderNumber} />
+          </Modal>
+        )}
       </div>
     </section>
   );
