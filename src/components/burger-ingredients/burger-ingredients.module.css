@@ -13,3 +13,26 @@
   text-align: center;
   list-style-type: none;
 }
+
+.flex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.scroll_y {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.scroll_y::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll_y::-webkit-scrollbar-thumb {
+  background: #4c4cff;
+}
+
+.scroll_y::-webkit-scrollbar-track {
+  background: #4c4cff;
+}

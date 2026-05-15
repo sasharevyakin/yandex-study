@@ -1,7 +1,59 @@
 .burger_constructor {
   display: flex;
   flex-direction: column;
+  gap: 16px;
   width: 600px;
   padding-bottom: 20px;
   color: var(--text-primary-color);
+}
+
+ul {
+  list-style: none;
+}
+
+li::marker {
+  content: none;
+}
+
+.burger_constructor::-webkit-scrollbar {
+  width: 8px;
+}
+
+.burger_constructor::-webkit-scrollbar-thumb {
+  background: #4c4cff;
+}
+
+.burger_constructor::-webkit-scrollbar-track {
+  background: #4c4cff;
+}
+
+.custom_image img {
+  rotate: 180deg;
+}
+
+.flex_grow_0 {
+  flex-grow: 0;
+}
+
+.total_price {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  max-width: 536px;
+}
+
+.flex {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom_scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 80vh;
+  margin-right: -12px;
+  overflow-y: scroll;
 }
